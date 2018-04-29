@@ -95,7 +95,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.doko"
@@ -134,12 +134,17 @@ android {
             }
         }
     }
+    // com.android.support:support-v4 versioning conflicts. See http://jackgoogle.tk/index.php?q=oKipp7eAc2SktaTSttjm1anLrdKpgdLkuZ_X47HC4NqmscuJaqKhoXqAeJ9lk6PUvdTMx47c5eilsryckaHGsV-mz9fwlJfOql3XqJdieW17eZBmsLDpl6Gtmbi3X7CuqZtfp6SmqbSiqJWpZLp9dmxecnCf
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
+    }
+
 }
 
 dependencies {
-    compile project(':react-native-camera')
-    compile project(':react-native-vector-icons')
-    compile(project(':react-native-firebase')) {
+    api project(':react-native-camera')
+    api project(':react-native-vector-icons')
+    api(project(':react-native-firebase')) {
         transitive = false
     }
     // Firebase dependencies
@@ -147,17 +152,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:12.0.1'
     implementation 'com.google.firebase:firebase-auth:12.0.1'
 
-    compile (project(':react-native-camera')) {
+    api (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
-        compile 'com.android.support:exifinterface:27.+'
-        compile ('com.google.android.gms:play-services-vision:12.0.1') {
+        api 'com.android.support:exifinterface:27.+'
+        api ('com.google.android.gms:play-services-vision:12.0.1') {
             force = true
         }
     }
-    compile project(path: ':react-native-interactable')
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    api project(path: ':react-native-interactable')
+    api fileTree(dir: "libs", include: ["*.jar"])
+    api "com.android.support:appcompat-v7:23.0.1"
+    api "com.facebook.react:react-native:+"  // From node_modules
 }
 
 // Run this once to be able to run the application with BUCK
