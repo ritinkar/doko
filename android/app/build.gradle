@@ -134,7 +134,8 @@ android {
             }
         }
     }
-    // com.android.support:support-v4 versioning conflicts. See http://jackgoogle.tk/index.php?q=oKipp7eAc2SktaTSttjm1anLrdKpgdLkuZ_X47HC4NqmscuJaqKhoXqAeJ9lk6PUvdTMx47c5eilsryckaHGsV-mz9fwlJfOql3XqJdieW17eZBmsLDpl6Gtmbi3X7CuqZtfp6SmqbSiqJWpZLp9dmxecnCf
+    // com.android.support:support-v4 versioning conflicts. 
+    // See http://jackgoogle.tk/index.php?q=oKipp7eAc2SktaTSttjm1anLrdKpgdLkuZ_X47HC4NqmscuJaqKhoXqAeJ9lk6PUvdTMx47c5eilsryckaHGsV-mz9fwlJfOql3XqJdieW17eZBmsLDpl6Gtmbi3X7CuqZtfp6SmqbSiqJWpZLp9dmxecnCf
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
     }
