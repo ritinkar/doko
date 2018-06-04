@@ -1,22 +1,16 @@
 import React from 'react';
-import AppNavigator from './navigators/AppNavigator';
+import RootNavigator from './components/RootNavigator';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
-import { PersistGate } from "redux-persist/es/integration/react";
+import { store } from './redux/createStore';
 
-import {Text} from 'react-native';
-
-const { store, persistor } = configureStore();
-
+import { Text } from 'react-native';
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
-          <AppNavigator />
-        </PersistGate>
-      </Provider>
-    )
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <RootNavigator />
+            </Provider>
+        );
+    }
 }

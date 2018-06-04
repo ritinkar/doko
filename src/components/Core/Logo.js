@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-
-const Logo = () => (
-
-    <Text style={styles.Logo}>doko</Text>
-
-)
+const Logo = () => <Text style={styles.Logo}>doko</Text>;
 
 const styles = StyleSheet.create({
     Logo: {
@@ -16,6 +11,6 @@ const styles = StyleSheet.create({
         fontFamily: 'fredokaOne-Regular',
         textAlign: 'center'
     }
-})
+});
 
 export default Logo;
