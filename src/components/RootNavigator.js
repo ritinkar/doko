@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import SignedOutNavigator from './SignedOutSection';
 import SignedInNavigator from './SignedInSection';
 
-export const RootNavigator = createStackNavigator(
+const RootNavigator = createStackNavigator(
     {
         SignedIn: {
             screen: SignedInNavigator,

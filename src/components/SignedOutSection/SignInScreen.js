@@ -1,8 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
-import { firebaseSignIn } from '../actions/signIn';
-import { connect } from 'react-redux';
+import { View, Button } from 'react-native';
+import { StyledTextInput } from '../Core';
 
 class SignInScreen extends React.Component {
     constructor(props) {
@@ -13,13 +11,13 @@ class SignInScreen extends React.Component {
         };
     }
 
-    handleNameChange = value => {
+    _handleNameChange = value => {
         this.setState({
             userName: value
         });
     };
 
-    handlePasswordChange = value => {
+    _handlePasswordChange = value => {
         this.setState({
             password: value
         });
@@ -28,38 +26,30 @@ class SignInScreen extends React.Component {
     render() {
         return (
             <View style={{ paddingVertical: 20 }}>
-                <Card>
-                    <FormInput
+                <View>
+                    <StyledTextInput
                         value={this.state.userName}
-                        onChangeText={this.handleNameChange}
+                        onChangeText={this._handleNameChange}
                         placeholder="User Name..."
                     />
-                    <FormInput
+                    <StyledTextInput
                         value={this.state.password}
                         secureTextEntry
-                        onChangeText={this.handlePasswordChange}
+                        onChangeText={this._handlePasswordChange}
                         placeholder="Password..."
                     />
 
-                    <Button
+                    <StyledTextInput
                         buttonStyle={{ marginTop: 20 }}
                         backgroundColor="transparent"
                         textStyle={{ color: '#bcbec1' }}
                         title="Sign In"
-                        onPress={() => this.props.signInPress(this.state)}
+                        onPress={() => {}}
                     />
-                </Card>
+                </View>
             </View>
         );
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        signInPress: user => {
-            dispatch(firebaseSignIn(user));
-        }
-    };
-};
-
-export default connect(null, mapDispatchToProps)(SignInScreen);
+export default SignInScreen;

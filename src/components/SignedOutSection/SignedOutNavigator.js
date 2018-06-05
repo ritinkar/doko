@@ -24,3 +24,5 @@ const SignedOutNavigator = createStackNavigator(
         initialRouteName: 'SignUp'
     }
 );
+
+export default SignedOutNavigator;

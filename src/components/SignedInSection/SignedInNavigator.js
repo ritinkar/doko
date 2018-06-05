@@ -5,3 +5,5 @@ import { createStackNavigator } from 'react-navigation';
 const SignedInNavigator = createStackNavigator({
     Home: HomeScreen
 });
+
+export default SignedInNavigator;
