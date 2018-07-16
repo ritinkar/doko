@@ -21,7 +21,7 @@ const RootNavigator = createStackNavigator(
     {
         headerMode: 'none',
         mode: 'modal',
-        initialRouteName: 'SignedOut'
+        initialRouteName: 'SignedIn'
     }
 );
 

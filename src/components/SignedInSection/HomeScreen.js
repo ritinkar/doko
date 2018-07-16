@@ -1,28 +1,11 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, Button, View } from 'react-native';
-import Swiper from 'react-native-swiper';
-import CreateScreen from './CreateScreen';
-import InboxScreen from './InboxScreen';
 
-const HomeScreen = () => (
-    <Swiper
-        style={Styles.wrapper}
-        showsButtons={false}
-        loop={false}
-        showsPagination={false}
-        index={1}
-    >
-        <View style={Styles.slide1}>
-            <CreateScreen />
-        </View>
-        <View style={Styles.slide2}>
-            <InboxScreen />
-        </View>
-        <View style={Styles.slide3}>
-            <Text style={Styles.text}>And simpe</Text>
-        </View>
-    </Swiper>
-);
+import QuizSection from '../QuizSection';
+
+const HomeScreen = () => {
+    return <QuizSection />;
+};
 
 const Styles = StyleSheet.create({
     wrapper: {},
