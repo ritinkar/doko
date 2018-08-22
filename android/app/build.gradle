@@ -153,6 +153,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:12.0.1'
     implementation 'com.google.firebase:firebase-auth:12.0.1'
 
+    // Linear gradients
+    compile project(':react-native-linear-gradient')
+
     api (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
         api 'com.android.support:exifinterface:27.+'
