@@ -13,12 +13,24 @@ class QuizScreen extends React.Component {
         };
     }
     _handleAnswer = answerId => {
-        this.setState(prevState => {
-            return {
-                currentQuestionId: prevState.currentQuestionId + 1,
-                score: prevState.score + 1
-            };
-        });
+        const question = this.props.questions.find(
+            question => question.id === this.state.currentQuestionId
+        );
+
+        if (answerId === question.correctAnswerId) {
+            this.setState(prevState => {
+                return {
+                    currentQuestionId: prevState.currentQuestionId + 1,
+                    score: prevState.score + 1
+                };
+            });
+        } else {
+            this.setState(prevState => {
+                return {
+                    currentQuestionId: prevState.currentQuestionId + 1
+                };
+            });
+        }
     };
 
     render() {
