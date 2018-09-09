@@ -5,14 +5,19 @@ import PropTypes from 'prop-types';
 
 const AnswerButton = props => {
     return (
-        <Button mode="outlined" style={Styles.AnswerButton}>
+        <Button
+            mode="outlined"
+            style={Styles.AnswerButton}
+            onPress={() => props.handleAnswer(props.answer.id)}
+        >
             {props.answer.text}
         </Button>
     );
 };
 
 AnswerButton.propTypes = {
-    answer: PropTypes.object.isRequired
+    answer: PropTypes.object.isRequired,
+    handleAnswer: PropTypes.func.isRequired
 };
 
 const Styles = StyleSheet.create({

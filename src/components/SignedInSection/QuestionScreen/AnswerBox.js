@@ -8,14 +8,19 @@ const AnswerBox = props => {
     return (
         <View style={Styles.container}>
             {props.question.answers.map(answer => (
-                <AnswerButton key={answer.id} answer={answer} />
+                <AnswerButton
+                    key={answer.id}
+                    answer={answer}
+                    handleAnswer={props.handleAnswer}
+                />
             ))}
         </View>
     );
 };
 
 AnswerBox.propTypes = {
-    question: PropTypes.object.isRequired
+    question: PropTypes.object.isRequired,
+    handleAnswer: PropTypes.func.isRequired
 };
 
 const Styles = StyleSheet.create({

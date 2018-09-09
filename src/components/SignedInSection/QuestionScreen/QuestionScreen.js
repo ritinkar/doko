@@ -9,13 +9,17 @@ const QuestionScreen = props => {
     return (
         <View style={Styles.container}>
             <QuestionBox question={props.question} />
-            <AnswerBox question={props.question} />
+            <AnswerBox
+                question={props.question}
+                handleAnswer={props.handleAnswer}
+            />
         </View>
     );
 };
 
 QuestionScreen.propTypes = {
-    question: PropTypes.object.isRequired
+    question: PropTypes.object.isRequired,
+    handleAnswer: PropTypes.func.isRequired
 };
 
 const Styles = StyleSheet.create({
