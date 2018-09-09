@@ -1,6 +1,6 @@
 // Reducers
 const initialState = {
-    questions: [
+    details: [
         {
             id: 1,
             text: 'New phon. who dis?',
@@ -50,16 +50,11 @@ const initialState = {
     ]
 };
 
-const userReducer = (state = initialState, action) => {
+const questionsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_UP:
-            return {
-                ...state,
-                username: action.username
-            };
         default:
             return state;
     }
 };
 
-export { userReducer };
+export { questionsReducer };

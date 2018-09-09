@@ -2,16 +2,20 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import AnswerButton from './AnswerButton';
+import PropTypes from 'prop-types';
 
 const AnswerBox = props => {
     return (
         <View style={Styles.container}>
-            <AnswerButton />
-            <AnswerButton />
-            <AnswerButton />
-            <AnswerButton />
+            {props.question.answers.map(answer => (
+                <AnswerButton key={answer.id} answer={answer} />
+            ))}
         </View>
     );
+};
+
+AnswerBox.propTypes = {
+    question: PropTypes.object.isRequired
 };
 
 const Styles = StyleSheet.create({

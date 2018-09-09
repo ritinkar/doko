@@ -1,18 +1,25 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Text, Card, Title } from 'react-native-paper';
+import PropTypes from 'prop-types';
 
 const QuestionBox = props => {
     return (
-        <View style={Styles.container}>
-            <Text>hello</Text>
-        </View>
+        <Card style={Styles.container}>
+            <Card.Content>
+                <Title>{props.question.text}</Title>
+            </Card.Content>
+        </Card>
     );
+};
+
+QuestionBox.propTypes = {
+    question: PropTypes.object.isRequired
 };
 
 const Styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: '80%',
         display: 'flex'
     }
 });
