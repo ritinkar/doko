@@ -1,36 +1,26 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, Button, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Button } from 'react-native-paper';
 
-import QuizSection from '../QuizSection';
-
-const HomeScreen = () => {
-    return <QuizSection />;
+const HomeScreen = props => {
+    console.log(props);
+    return (
+        <View style={Styles.container}>
+            <Button
+                mode="outlined"
+                onPress={() => props.navigation.navigate('Quiz')}
+            >
+                Start quiz
+            </Button>
+        </View>
+    );
 };
 
 const Styles = StyleSheet.create({
-    wrapper: {},
-    slide1: {
+    container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
-    },
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
-    },
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
-    },
-    text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold'
+        alignItems: 'center'
     }
 });
 
