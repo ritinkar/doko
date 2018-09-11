@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const QuestionScreen = props => {
     return (
         <View style={Styles.container}>
-            <QuestionBox question={props.question} />
+            <QuestionBox question={props.question} score={props.score} />
             <AnswerBox
                 question={props.question}
                 handleAnswer={props.handleAnswer}
@@ -19,7 +19,8 @@ const QuestionScreen = props => {
 
 QuestionScreen.propTypes = {
     question: PropTypes.object.isRequired,
-    handleAnswer: PropTypes.func.isRequired
+    handleAnswer: PropTypes.func.isRequired,
+    score: PropTypes.number.isRequired
 };
 
 const Styles = StyleSheet.create({

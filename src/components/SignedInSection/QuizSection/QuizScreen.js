@@ -43,6 +43,7 @@ class QuizScreen extends React.Component {
         return (
             <View style={Styles.container}>
                 <QuestionScreen
+                    score={this.state.score}
                     question={this.props.questions.find(
                         question => question.id === this.state.currentQuestionId
                     )}
