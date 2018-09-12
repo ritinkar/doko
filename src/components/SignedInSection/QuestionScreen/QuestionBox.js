@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 
 const QuestionBox = props => {
     return (
-        <Card style={Styles.container}>
-            <Card.Content>
-                <Title>Score: {props.score}</Title>
-                <Paragraph>{props.question.text}</Paragraph>
-            </Card.Content>
-        </Card>
+        <View style={Styles.container}>
+            <Title>Score: {props.score}</Title>
+            <Paragraph>{props.question.text}</Paragraph>
+        </View>
     );
 };
 
@@ -21,9 +19,7 @@ QuestionBox.propTypes = {
 
 const Styles = StyleSheet.create({
     container: {
-        width: '80%',
-        display: 'flex',
-        height: '40%'
+        flex: 0.3
     }
 });
 

@@ -7,7 +7,7 @@ const AnswerButton = props => {
     return (
         <Button
             mode="outlined"
-            style={Styles.AnswerButton}
+            style={{ ...Styles.AnswerButton, ...props.style }}
             onPress={() => props.handleAnswer(props.answer.id)}
         >
             {props.answer.text}
@@ -17,7 +17,8 @@ const AnswerButton = props => {
 
 AnswerButton.propTypes = {
     answer: PropTypes.object.isRequired,
-    handleAnswer: PropTypes.func.isRequired
+    handleAnswer: PropTypes.func.isRequired,
+    style: PropTypes.object
 };
 
 const Styles = StyleSheet.create({

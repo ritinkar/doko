@@ -9,6 +9,7 @@ const AnswerBox = props => {
         <View style={Styles.container}>
             {props.question.answers.map(answer => (
                 <AnswerButton
+                    style={Styles.answerButton}
                     key={answer.id}
                     answer={answer}
                     handleAnswer={props.handleAnswer}
@@ -26,7 +27,14 @@ AnswerBox.propTypes = {
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
-        display: 'flex'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    answerButton: {
+        marginTop: 10,
+        marginBottom: 10,
+        width: '100%'
     }
 });
 

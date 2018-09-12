@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text, Button, Card } from 'react-native-paper';
 import AnswerBox from './AnswerBox';
 import QuestionBox from './QuestionBox';
 import PropTypes from 'prop-types';
@@ -8,11 +8,18 @@ import PropTypes from 'prop-types';
 const QuestionScreen = props => {
     return (
         <View style={Styles.container}>
-            <QuestionBox question={props.question} score={props.score} />
-            <AnswerBox
-                question={props.question}
-                handleAnswer={props.handleAnswer}
-            />
+            <Card style={Styles.questionCard}>
+                <Card.Content>
+                    <QuestionBox
+                        question={props.question}
+                        score={props.score}
+                    />
+                    <AnswerBox
+                        question={props.question}
+                        handleAnswer={props.handleAnswer}
+                    />
+                </Card.Content>
+            </Card>
         </View>
     );
 };
@@ -27,7 +34,18 @@ const Styles = StyleSheet.create({
     container: {
         flex: 1,
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    questionCard: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        display: 'flex',
+        height: '90%'
+    },
+    cardContent: {
+        width: '100%'
     }
 });
 
