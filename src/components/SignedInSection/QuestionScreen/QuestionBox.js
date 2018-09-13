@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 const QuestionBox = props => {
     return (
         <View style={Styles.container}>
-            <Title>Score: {props.score}</Title>
+            <Title>
+                Score: {props.score} Time Left: {props.timeLeft}
+            </Title>
+
             <Paragraph>{props.question.text}</Paragraph>
         </View>
     );
@@ -14,7 +17,8 @@ const QuestionBox = props => {
 
 QuestionBox.propTypes = {
     question: PropTypes.object.isRequired,
-    score: PropTypes.number.isRequired
+    score: PropTypes.number.isRequired,
+    timeLeft: PropTypes.number.isRequired
 };
 
 const Styles = StyleSheet.create({

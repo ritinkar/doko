@@ -13,6 +13,7 @@ const QuestionScreen = props => {
                     <QuestionBox
                         question={props.question}
                         score={props.score}
+                        timeLeft={props.timeLeft}
                     />
                     <AnswerBox
                         question={props.question}
@@ -27,7 +28,8 @@ const QuestionScreen = props => {
 QuestionScreen.propTypes = {
     question: PropTypes.object.isRequired,
     handleAnswer: PropTypes.func.isRequired,
-    score: PropTypes.number.isRequired
+    score: PropTypes.number.isRequired,
+    timeLeft: PropTypes.number.isRequired
 };
 
 const Styles = StyleSheet.create({
