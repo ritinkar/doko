@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import QuestionScreen from '../QuestionScreen';
+import ScoreCard from './ScoreCard';
 import PropTypes from 'prop-types';
-import { Snackbar } from 'react-native-paper';
 
 class QuizScreen extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class QuizScreen extends React.Component {
             snackbarCorrectVisible: false,
             snackbarWrongVisible: false,
             timeLeft: 15,
+            lastQuestion: false,
             quizFinished: false,
             timerId: null
         };
@@ -38,26 +39,42 @@ class QuizScreen extends React.Component {
         clearInterval(this.state.timerId);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // if update was caused by a state change and
+        // if this is the last question mark it as such
+        if (this.state.currentQuestionId != prevState.currentQuestionId) {
+            if (this.state.currentQuestionId === this.props.questions.length) {
+                this.setState({ lastQuestion: true });
+            }
+        }
+        console.log(this.state.currentQuestionId);
+    }
+
     _handleAnswer = answerId => {
         const question = this.props.questions.find(
             question => question.id === this.state.currentQuestionId
         );
+
+        // Update the questionId
+        // Reset the timer
+        // If answer is correct increase the score
+        // If this was the last question end the quiz
 
         if (answerId === question.correctAnswerId) {
             this.setState(prevState => {
                 return {
                     currentQuestionId: prevState.currentQuestionId + 1,
                     score: prevState.score + 1,
-                    snackbarCorrectVisible: true,
-                    timeLeft: 15
+                    timeLeft: 15,
+                    quizFinished: prevState.lastQuestion ? true : false
                 };
             });
         } else {
             this.setState(prevState => {
                 return {
                     currentQuestionId: prevState.currentQuestionId + 1,
-                    snackbarWrongVisible: true,
-                    timeLeft: 15
+                    timeLeft: 15,
+                    quizFinished: prevState.lastQuestion ? true : false
                 };
             });
         }
@@ -76,24 +93,15 @@ class QuizScreen extends React.Component {
                         )}
                         handleAnswer={this._handleAnswer}
                     />
-                    <Snackbar
-                        style={Styles.snackbarCorrect}
-                        visible={this.state.snackbarCorrectVisible}
-                        onDismiss={() =>
-                            this.setState({ snackbarCorrectVisible: false })
-                        }
-                    >
-                        Correct!
-                    </Snackbar>
-                    <Snackbar
-                        style={Styles.snackbarWrong}
-                        visible={this.state.snackbarWrongVisible}
-                        onDismiss={() =>
-                            this.setState({ snackbarWrongVisible: false })
-                        }
-                    >
-                        Wrong!
-                    </Snackbar>
+                </View>
+            );
+        } else {
+            return (
+                <View style={Styles.container}>
+                    <ScoreCard
+                        score={this.state.score}
+                        navigation={this.props.navigation}
+                    />
                 </View>
             );
         }
