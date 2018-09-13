@@ -143,27 +143,9 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-camera')
-    implementation project(':react-native-vector-icons')
-    implementation (project(':react-native-firebase')) {
-        transitive = false
-    }
-    // Firebase dependencies
-    implementation 'com.google.android.gms:play-services-base:12.0.1'
-    implementation 'com.google.firebase:firebase-core:12.0.1'
-    implementation 'com.google.firebase:firebase-auth:12.0.1'
+    api project(':react-native-vector-icons')
 
-    // Linear gradients
-    implementation project(':react-native-linear-gradient')
 
-    implementation (project(':react-native-camera')) {
-        exclude group: "com.google.android.gms"
-        implementation 'com.android.support:exifinterface:27.+'
-        implementation ('com.google.android.gms:play-services-vision:12.0.1') {
-            force = true
-        }
-    }
-    implementation project(path: ':react-native-interactable')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -176,5 +158,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-// For rnfirebase 
-apply plugin: 'com.google.gms.google-services'
